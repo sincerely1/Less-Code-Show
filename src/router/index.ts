@@ -13,7 +13,17 @@ const router = createRouter({
         {
           path: 'dataSource',
           name: 'dataSource',
-          component: () => import('../views/DataSourceView.vue')
+          component: () => import('../views/DataSourceView.vue'),
+          children: [
+            {
+              path: ':id',
+              component: () => import('../components/DataSourceContent/DataSourceContent.vue')
+            },
+            {
+              path: '',
+              redirect: '/app/dataSource/1'
+            }
+          ]
         },
         {
           path: 'layout',
@@ -24,16 +34,13 @@ const router = createRouter({
           path: 'actions',
           name: 'actions',
           component: () => import('../views/ActionsView.vue')
+        },
+        {
+          path: '/runner',
+          name: 'runner',
+          component: () => import('../views/RunnerView.vue')
         }
       ]
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
     },
     {
       path: '/',

@@ -39,6 +39,7 @@ const fields: Field[] = [
 <template>
   <div class="form">
     <div class="form-item" v-for="field in fields" :key="field.id">
+      <label>{{ field.label }}</label>
       <component :is="fieldMap[field.type]" />
     </div>
   </div>

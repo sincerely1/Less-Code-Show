@@ -6,21 +6,21 @@ import { useRoute } from 'vue-router'
 
 const linkItems = [
   {
-    value: 'dataSource',
+    value: '/app/dataSource',
     label: '数据源',
     bg: `radial-gradient(50% 50% at 50% 100%, rgba(0, 196, 83, 0.2) 0%, rgba(0, 196, 83, 0) 100%)`,
     color: 'rgb(0, 196, 83)',
     borderColor: 'radial-gradient(50% 50%, rgb(0, 196, 83) 0%, rgba(0, 196, 83, 0) 100%)'
   },
   {
-    value: 'layout',
+    value: '/app/layout',
     label: '布局',
     bg: `radial-gradient(50% 50% at 50% 100%, rgba(24, 190, 212, 0.2) 0%, rgba(24, 190, 212, 0) 100%)`,
     color: 'rgb(24, 190, 212)',
     borderColor: 'radial-gradient(50% 50%, rgb(24, 190, 212) 0%, rgba(24, 190, 212, 0) 100%)'
   },
   {
-    value: 'actions',
+    value: '/app/actions',
     label: '动作',
     bg: `radial-gradient(50% 50% at 50% 100%, rgba(241, 60, 11, 0.2) 0%, rgba(241, 60, 11, 0) 100%)`,
     color: 'rgb(241, 60, 11)',
