@@ -6,6 +6,7 @@ import type { Icon } from '@icon-park/vue-next/lib/runtime'
 const props = defineProps<{
   previewMode?: PreviewType
 }>()
+console.log(props.previewMode === 'laptop')
 const emit = defineEmits<{
   'preview-mode-change': [mode: PreviewType]
 }>()

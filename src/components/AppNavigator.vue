@@ -66,9 +66,7 @@ const Icon = defineComponent({
   <div class="app-navigator">
     <div class="app-info-wrapper">
       <div class="app-logo">
-        <img
-          src="https://cdnjs.cloudflare.com/ajax/libs/twemoji/11.3.0/2/svg/1f469-200d-1f692.svg"
-        />
+        <img src="@/assets/svg/logo.svg" />
       </div>
       <h1 class="app-name">LessCodeShow</h1>
     </div>
@@ -136,7 +134,7 @@ const Icon = defineComponent({
   height: 32px;
   margin: 10px 8px 10px 18px;
   border-radius: 8px;
-  background-color: var(--color-primary);
+  background-color: var(--color-white);
 }
 
 .app-logo img {
