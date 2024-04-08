@@ -20,7 +20,7 @@ import { SmoothDndDraggable } from '@/components/SmoothDnd/SmoothDndDraggable'
           <div class="block-icon-wrapper">
             <component :is="d.icon" />
           </div>
-          <span class="block-name">{{ d.name }}</span>
+          <span class="block-name">{{ d.label }}</span>
         </div>
       </smooth-dnd-draggable>
     </smooth-dnd-container>

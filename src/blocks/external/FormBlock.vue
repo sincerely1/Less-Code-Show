@@ -15,7 +15,6 @@ const props = defineProps({
     required: true
   }
 })
-console.log('🚀 ~ file: ButtonBlock.vue:12 ~ props:', props)
 
 const fieldMap = {
   input: h('input'),

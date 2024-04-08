@@ -13,6 +13,16 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vue-common-lib': ['vue', 'vue-router', 'pinia'],
+          'react-common-lib': ['react', 'react-dom', '@glideapps/glide-data-grid']
+        }
+      }
+    }
+  },
   server: {
     host: true,
     open: true,

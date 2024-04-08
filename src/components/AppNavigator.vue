@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { useEnvStore } from '@/stores/debug'
-import { Data, LayoutThree, Lightning, Share, Bug } from '@icon-park/vue-next'
+import { Data, LayoutThree, Lightning, Share, PreviewOpen } from '@icon-park/vue-next'
 import { computed, defineComponent, h } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const linkItems = [
   {
@@ -32,13 +31,12 @@ defineProps<{
   msg: string
 }>()
 
-const envStore = useEnvStore()
-
 const route = useRoute()
-console.log('🚀 ~ file: AppNavigator.vue:35 ~ route:', JSON.parse(JSON.stringify(route)))
-
+const router = useRouter()
 const activeLink = computed(() => route.name)
-
+const linkToRunning = () => {
+  router.push('/runner')
+}
 const Icon = defineComponent({
   setup(props) {
     switch (props.type) {
@@ -78,10 +76,6 @@ const Icon = defineComponent({
         :style="activeLink === item.value && { background: item.bg }"
         :to="item.value"
       >
-        <!-- defineComponent + h 代替条件渲染 -->
-        <!-- <div v-if="item.value === 'dataSource'"><Data /></div>
-        <div v-if="item.value === 'layout'"><LayoutThree /></div>
-        <div v-if="item.value === 'action'"><Lightning /></div> -->
         <div
           :style="{
             lineHeight: 0.7,
@@ -100,13 +94,11 @@ const Icon = defineComponent({
       </RouterLink>
     </div>
     <div class="app-setting-wrapper">
-      <div class="common-btn debug-btn" :class="{ debug: envStore.debug }" @click="envStore.toggle">
-        <Bug />
-        开发模式:({{ envStore.debug ? '开' : '关' }})
-      </div>
+      <RouterLink class="common-btn" to="/runner"> <PreviewOpen />预览</RouterLink>
+      <!-- <div class="common-btn" @click="linkToRunning"><PreviewOpen />预览</div> -->
       <div class="common-btn">
         <Share />
-        发布
+        导出
       </div>
     </div>
   </div>

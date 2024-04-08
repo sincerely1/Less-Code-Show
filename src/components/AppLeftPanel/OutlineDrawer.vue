@@ -14,7 +14,7 @@ const { blocks } = storeToRefs(appEditorStore)
       <li class="outline-item" v-for="block in blocks" :key="block.type">
         <component :is="blocksBaseMeta[block.type].icon" />
         <span class="outline-item-name">
-          {{ blocksBaseMeta[block.type].name }}
+          {{ blocksBaseMeta[block.type].type }}
         </span>
         <span class="outline-item-title">
           {{ block.label }}

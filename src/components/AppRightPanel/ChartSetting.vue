@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { ChartBlockInfo, ChartType } from '@/types/block'
 import { useForm } from 'vee-validate'
 import { watch } from 'vue'
+
+import type { ChartBlockInfo, ChartType } from '@/types/block'
 import SegmentedControl from '@/components/SegmentedControl/SegmentedControl.vue'
 
 // 怎么传入 props，在这里如何定义？
@@ -26,13 +27,13 @@ const data = [
 
 const emit = defineEmits<{ (event: 'change', block: ChartBlockInfo): void }>()
 
-const { values, validate, defineInputBinds } = useForm({
+const { values, defineField } = useForm({
   initialValues: {
     chartType: props.blockInfo.props.chartType
   }
 })
 
-const chartType = defineInputBinds('chartType')
+const chartType = defineField('chartType')
 
 watch([values], ([newValues]) => {
   emit('change', { ...props.blockInfo, props: { ...props.blockInfo.props, ...newValues } })

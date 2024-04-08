@@ -34,13 +34,13 @@ const router = createRouter({
           path: 'actions',
           name: 'actions',
           component: () => import('../views/ActionsView.vue')
-        },
-        {
-          path: '/runner',
-          name: 'runner',
-          component: () => import('../views/RunnerView.vue')
         }
       ]
+    },
+    {
+      path: '/runner',
+      name: 'runner',
+      component: () => import('../views/RunnerView.vue')
     },
     {
       path: '/',

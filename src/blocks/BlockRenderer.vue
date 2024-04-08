@@ -4,7 +4,6 @@ import { dropHandlers, smoothDnD } from 'smooth-dnd'
 import { inject, ref } from 'vue'
 
 import { useAppEditorStore } from '@/stores/appEditor'
-import { useEnvStore } from '@/stores/debug'
 
 // import { useClickOutside } from '@/hooks/useClickOutside'
 
@@ -23,7 +22,6 @@ smoothDnD.dropHandler = dropHandlers.reactDropHandler().handler
 //   type: BlockType
 // }>()
 const blockWrapperRef = ref<HTMLElement | null>(null)
-const envStore = useEnvStore()
 const appEditorStore = useAppEditorStore()
 
 const { currentBlockId, blocks } = storeToRefs(appEditorStore)
@@ -41,10 +39,7 @@ const editable = inject('editable', true)
     <component :is="$blocksMap[block.type].material" class="block" :blockInfo="block" />
     <div
       v-if="editable"
-      :class="[
-        'block-wrapper-indicator',
-        { shown: envStore.debug, selected: currentBlockId === block.id }
-      ]"
+      :class="['block-wrapper-indicator', { selected: currentBlockId === block.id }]"
     >
       <div class="block-toolbar" v-if="currentBlockId === block.id">
         <div class="block-toolbar-item handle">
@@ -85,10 +80,6 @@ const editable = inject('editable', true)
   border-radius: 8px;
   pointer-events: none;
   user-select: none;
-}
-
-.block-wrapper-indicator.shown {
-  border: 1px dashed var(--color-gray-300);
 }
 
 .block-wrapper-indicator.selected {
