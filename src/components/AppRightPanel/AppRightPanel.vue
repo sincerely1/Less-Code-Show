@@ -7,9 +7,13 @@ import { blocksBaseMeta } from '@/constants/blocksBaseMeta'
 import { useAppEditorStore } from '@/stores/appEditor'
 import type { BlockInfo } from '@/types/block'
 
-import ChartSetting from './ChartSetting.vue'
-import QuoteSetting from './QuoteSetting.vue'
+import ChartSetting from '@/blocks/settings/ChartSetting.vue'
+import QuoteSetting from '@/blocks/settings/QuoteSetting.vue'
 import SchemaExporter from './SchemaExporter.vue'
+import HeroTitleSetting from '@/blocks/settings/HeroTitleSetting.vue'
+import ImageSetting from '@/blocks/settings/ImageSetting.vue'
+import ParagraphSetting from '@/blocks/settings/ParagraphSetting.vue'
+import ButtonSetting from '@/blocks/settings/ButtonSetting.vue'
 
 const appEditorStore = useAppEditorStore()
 
@@ -31,8 +35,20 @@ const blockSetting = computed(() => {
     case 'quote': {
       return QuoteSetting
     }
-    case 'chart': {
+    case 'baseChart': {
       return ChartSetting
+    }
+    case 'heroTitle': {
+      return HeroTitleSetting
+    }
+    case 'image': {
+      return ImageSetting
+    }
+    case 'paragraph': {
+      return ParagraphSetting
+    }
+    case 'button': {
+      return ButtonSetting
     }
     default:
       return ''

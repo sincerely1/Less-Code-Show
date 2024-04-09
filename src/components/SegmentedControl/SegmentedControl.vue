@@ -102,16 +102,19 @@ watch(
   border-radius: 8px;
   background-color: var(--color-gray-100);
 }
+
 .segmented-control-item {
   position: relative;
   flex: 1;
 }
+
 .segmented-control-input {
   width: 0;
   height: 0;
   overflow: hidden;
   position: absolute;
 }
+
 .segmented-control-label {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -125,6 +128,7 @@ watch(
   cursor: pointer;
   user-select: none;
 }
+
 .segmented-control-indicator {
   position: absolute;
   top: 0;

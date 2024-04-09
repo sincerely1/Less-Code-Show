@@ -5,7 +5,7 @@ import {
   ImageFiles,
   Notes,
   Quote,
-  Table,
+  ParagraphRectangle,
   TitleLevel
 } from '@icon-park/vue-next'
 import type { Icon } from '@icon-park/vue-next/lib/runtime'
@@ -31,13 +31,13 @@ export const blocksBaseMetaList: { type: BlockType; label: string; icon: Icon }[
   },
   { type: 'image', label: '图片', icon: ImageFiles },
   {
-    type: 'view',
-    label: '视图',
-    icon: Table
+    type: 'paragraph',
+    label: '段落',
+    icon: ParagraphRectangle
   },
   {
-    type: 'chart',
-    label: '图表',
+    type: 'baseChart',
+    label: '基础图表',
     icon: ChartLine
   },
   {
@@ -65,8 +65,8 @@ export const getBlocksDefaultData = (type: BlockType): BlockInfo => {
         type: 'quote',
         label: '引述',
         props: {
-          content: '引述文本 quote',
-          status: 'success'
+          status: 'success',
+          content: '引述文本 quote'
         }
       }
     case 'notes':
@@ -88,6 +88,7 @@ export const getBlocksDefaultData = (type: BlockType): BlockInfo => {
         type: 'heroTitle',
         label: '标题',
         props: {
+          level: 1,
           content: '标题'
         }
       }
@@ -100,25 +101,19 @@ export const getBlocksDefaultData = (type: BlockType): BlockInfo => {
           url: 'https://images.pexels.com/photos/2577274/pexels-photo-2577274.jpeg?auto=compress&cs=tinysrgb&w=1600'
         }
       }
-    case 'view':
+    case 'paragraph':
       return {
         id,
-        type: 'view',
-        label: '视图',
+        type: 'paragraph',
+        label: '段落',
         props: {
-          fields: {
-            id: {
-              type: 'text'
-            }
-          },
-          fieldProps: [],
-          data: []
+          content: '这是一段话'
         }
       }
-    case 'chart':
+    case 'baseChart':
       return {
         id,
-        type: 'chart',
+        type: 'baseChart',
         label: '图表',
         props: {
           chartType: 'echarts'
@@ -130,8 +125,10 @@ export const getBlocksDefaultData = (type: BlockType): BlockInfo => {
         type: 'button',
         label: '按钮',
         props: {
-          content: '按钮'
-        }
+          content: '按钮',
+          type: 'primary'
+        },
+        events: [{ name: 'click', func: 'function onClick(){\n}' }]
       }
     case 'form':
       return {

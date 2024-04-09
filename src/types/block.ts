@@ -1,8 +1,11 @@
-export type BasicBlockType = 'heroTitle' | 'view' | 'chart' | 'quote' | 'image'
+export type BasicBlockType = 'heroTitle' | 'paragraph' | 'baseChart' | 'quote' | 'image'
 export type ExternalBlockType = 'button' | 'form' | 'notes'
 
 export type BlockType = BasicBlockType | ExternalBlockType
-
+type event = {
+  name: string
+  func: string
+}
 export interface BaseBlockInfo {
   id: string
   label: string
@@ -13,24 +16,15 @@ export interface BaseBlockInfo {
 export interface HeroTitleBlockInfo extends BaseBlockInfo {
   type: 'heroTitle'
   props: {
+    level: number
     content: string
   }
 }
 
-export interface ViewBlockInfo extends BaseBlockInfo {
-  type: 'view'
+export interface ParagraphBlockInfo extends BaseBlockInfo {
+  type: 'paragraph'
   props: {
-    fields: Record<
-      string,
-      {
-        type: string
-      }
-    >
-    fieldProps: {
-      width: number
-      visible: boolean
-    }[]
-    data: { id: string; value: string }[]
+    content: string
   }
 }
 
@@ -54,7 +48,9 @@ export interface ButtonBlockInfo extends BaseBlockInfo {
   type: 'button'
   props: {
     content: string
+    type: any
   }
+  events: Array<event>
 }
 
 export interface FormBlockInfo extends BaseBlockInfo {
@@ -79,7 +75,7 @@ export interface NotesBlockInfo extends BaseBlockInfo {
 export type ChartType = 'echarts' | 'canvas' | 'svg'
 
 export interface ChartBlockInfo extends BaseBlockInfo {
-  type: 'chart'
+  type: 'baseChart'
   props: {
     chartType: ChartType
   }
@@ -88,7 +84,7 @@ export interface ChartBlockInfo extends BaseBlockInfo {
 export type BlockInfo =
   // basic
   | HeroTitleBlockInfo
-  | ViewBlockInfo
+  | ParagraphBlockInfo
   | QuoteBlockInfo
   | ImageBlockInfo
   | ChartBlockInfo

@@ -113,6 +113,7 @@ function greet(mode: PreviewType) {
   padding: 0 12px 32px;
   flex: 1;
 }
+
 .simulator-content {
   flex: 1;
   overflow: hidden;

@@ -2,6 +2,7 @@
 import { Error, Success, Wallet } from '@icon-park/vue-next'
 
 import type { QuoteBlockInfo } from '@/types/block'
+import { watch } from 'vue'
 
 const STATUS_MAP = {
   success: {
@@ -28,14 +29,22 @@ const props = defineProps<{
   blockInfo: QuoteBlockInfo
 }>()
 // @ts-ignore
-const { color, bgColor, /* borderColor, */ icon } = STATUS_MAP[props.blockInfo.props.status]
+let { color, bgColor, /* borderColor, */ icon } = STATUS_MAP[props.blockInfo.props.status]
+watch(
+  () => props.blockInfo.props.status,
+  (val: any) => {
+    // @ts-ignore
+    color = STATUS_MAP[val]['color']
+    // @ts-ignore
+    bgColor = STATUS_MAP[val]['bgColor']
+    // @ts-ignore
+    icon = STATUS_MAP[val]['icon']
+  }
+)
 </script>
 
 <template>
-  <div
-    class="quote"
-    :style="{ backgroundColor: bgColor, color /* , border: `1px solid ${borderColor}` */ }"
-  >
+  <div class="quote" :style="{ backgroundColor: bgColor, color }">
     <component :is="icon" />
     <span class="quote-text">{{ props.blockInfo.props.content }}</span>
   </div>

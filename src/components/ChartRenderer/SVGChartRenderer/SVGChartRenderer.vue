@@ -3,6 +3,7 @@
 </template>
 
 <script setup lang="ts">
+//@ts-ignore
 import * as d3 from 'd3'
 import { onMounted, ref } from 'vue'
 
@@ -53,15 +54,15 @@ onMounted(() => {
       .attr('stroke', '#000')
       .attr('stroke-width', 1)
       .style('opacity', 0.8)
-      .attr('fill', function (d, i: number) {
+      .attr('fill', function (_d: any, i: number) {
         return colors(i)
       })
       // @ts-ignore
       .attr('d', path)
-      .on('mouseover', function (ev, d) {
+      .on('mouseover', function (ev: any, d: any) {
         const hoveredData = d as d3.ExtendedFeature
         if (!hoveredData) return
-
+        //@ts-ignore
         d3.select(this).style('opacity', 1)
 
         tooltip.transition().duration(200).style('opacity', 0.9)
@@ -72,6 +73,7 @@ onMounted(() => {
           .style('top', ev.pageY - 28 + 'px')
       })
       .on('mouseout', function () {
+        //@ts-ignore
         d3.select(this).style('opacity', 0.8)
         tooltip.transition().duration(500).style('opacity', 0)
       })
@@ -91,7 +93,7 @@ onMounted(() => {
   position: absolute;
   z-index: 9999;
   padding: 0;
-  color: const(--color-primary);
+  color: var(--color-primary);
   font-size: 13px;
   text-align: left;
   border-radius: 2px;

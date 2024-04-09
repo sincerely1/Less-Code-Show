@@ -12,7 +12,7 @@ const props = defineProps<{
 
 const data = [
   {
-    label: 'Echarts-Echarts',
+    label: 'Echarts',
     value: 'echarts'
   },
   {
@@ -43,9 +43,6 @@ watch([values], ([newValues]) => {
 </script>
 
 <template>
-  <div>
-    {{ props.blockInfo.type }}
-  </div>
   <segmented-control
     v-model="chartType"
     :data="data"

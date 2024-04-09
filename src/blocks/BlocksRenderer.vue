@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 import { dropHandlers, type DropResult, smoothDnD } from 'smooth-dnd'
-import { toRaw, watch } from 'vue'
+import { toRaw } from 'vue'
 
 import { SmoothDndContainer } from '@/components/SmoothDnd/SmoothDndContainer'
 import { SmoothDndDraggable } from '@/components/SmoothDnd/SmoothDndDraggable'
@@ -12,21 +12,10 @@ import BlockRenderer from './BlockRenderer.vue'
 
 smoothDnD.dropHandler = dropHandlers.reactDropHandler().handler
 
-// const props = defineProps<{
-//   type: BlockType
-// }>()
 const appEditorStore = useAppEditorStore()
 
 const { blocks } = storeToRefs(appEditorStore)
 const { updateBlocks } = appEditorStore
-watch(
-  blocks,
-  (data) => {
-    console.log(data)
-  },
-  { deep: true }
-)
-
 const applyDrag = <T extends any[]>(arr: T, dragResult: DropResult) => {
   const { removedIndex, addedIndex, payload } = dragResult
 

@@ -1,8 +1,8 @@
 import type { BlockType } from '@/types/block'
 import QuoteBlock from '@/blocks/basic/QuoteBlock.vue'
 import HeroTitleBlock from '@/blocks/basic/HeroTitleBlock.vue'
-import ViewBlock from '@/blocks/basic/ViewBlock.vue'
-import ChartBlock from '@/blocks/basic/ChartBlock.vue'
+import ParagraphBlock from '@/blocks/basic/ParagraphBlock.vue'
+import BaseChartBlock from '@/blocks/basic/BaseChartBlock.vue'
 import ImageBlock from '@/blocks/basic/ImageBlock.vue'
 import ButtonBlock from '@/blocks/external/ButtonBlock.vue'
 import FormBlock from '@/blocks/external/FormBlock.vue'
@@ -19,12 +19,12 @@ const baseBlocks = [
     material: HeroTitleBlock
   },
   {
-    type: 'view',
-    material: ViewBlock
+    type: 'paragraph',
+    material: ParagraphBlock
   },
   {
-    type: 'chart',
-    material: ChartBlock
+    type: 'baseChart',
+    material: BaseChartBlock
   },
   {
     type: 'image',
@@ -50,11 +50,6 @@ class BlockSuite {
 
 const blockSuite = new BlockSuite()
 
-console.log(
-  '🚀 ~ file: BlockRenderer.vue:55 ~ blockSuite.hasBlock(button):',
-  blockSuite.hasBlock('button')
-)
-
 blockSuite.addBlock({
   type: 'button',
   material: ButtonBlock
@@ -67,10 +62,6 @@ blockSuite.addBlock({
   type: 'notes',
   material: NotesBlock
 })
-console.log(
-  '🚀 ~ file: BlockRenderer.vue:68 ~ blockSuite.hasBlock(button):',
-  blockSuite.hasBlock('button')
-)
 const blocksMap = blockSuite.getBlocksMap()
 
 export const blocksMapSymbol = Symbol('blocksMap')

@@ -1,17 +1,24 @@
 <script setup lang="ts">
-import { blocksBaseMetaList } from '@/constants/blocksBaseMeta'
 import { SmoothDndContainer } from '@/components/SmoothDnd/SmoothDndContainer'
 import { SmoothDndDraggable } from '@/components/SmoothDnd/SmoothDndDraggable'
+import { blocksBaseMetaList, getBlocksDefaultData } from '@/constants/blocksBaseMeta'
 </script>
 
 <template>
   <div class="blocks-drawer-wrapper">
     <h3 class="drawer-title">组件</h3>
+    <!-- <div v-for="d in blocksBaseMetaList" :key="d.type">{{ d.type }}</div> -->
+
     <smooth-dnd-container
       behaviour="copy"
       group-name="blocks"
       orientation="vertical"
-      :get-child-payload="(index: number) => blocksBaseMetaList[index]"
+      :get-child-payload="
+        (index: number) => {
+          const { type } = blocksBaseMetaList[index]
+          return getBlocksDefaultData(type)
+        }
+      "
       tag="div"
       class="blocks-list"
     >
@@ -20,7 +27,7 @@ import { SmoothDndDraggable } from '@/components/SmoothDnd/SmoothDndDraggable'
           <div class="block-icon-wrapper">
             <component :is="d.icon" />
           </div>
-          <span class="block-name">{{ d.label }}</span>
+          <span class="block-label">{{ d.label }}</span>
         </div>
       </smooth-dnd-draggable>
     </smooth-dnd-container>
@@ -39,7 +46,7 @@ import { SmoothDndDraggable } from '@/components/SmoothDnd/SmoothDndDraggable'
 }
 
 .blocks-list {
-  --grid-item-color: #1e9cdb;
+  --grid-item-color: #1e93db;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -77,7 +84,7 @@ import { SmoothDndDraggable } from '@/components/SmoothDnd/SmoothDndDraggable'
   background-color: var(--grid-item-color);
 }
 
-.block-name {
+.block-label {
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-bold);
 }

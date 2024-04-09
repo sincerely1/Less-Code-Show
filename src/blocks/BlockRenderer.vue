@@ -5,8 +5,6 @@ import { inject, ref } from 'vue'
 
 import { useAppEditorStore } from '@/stores/appEditor'
 
-// import { useClickOutside } from '@/hooks/useClickOutside'
-
 defineProps<{
   block: BlockInfo
   i: number
@@ -18,18 +16,12 @@ import type { BlockInfo } from '@/types/block'
 
 smoothDnD.dropHandler = dropHandlers.reactDropHandler().handler
 
-// const props = defineProps<{
-//   type: BlockType
-// }>()
 const blockWrapperRef = ref<HTMLElement | null>(null)
 const appEditorStore = useAppEditorStore()
 
 const { currentBlockId, blocks } = storeToRefs(appEditorStore)
 const { selectBlock } = appEditorStore
 
-// 需要保证 blocksMap 在 BlockRenderer 之前被注入，并且我们暂时使用的 Symbol 作为 key
-// console.log(inject('blocksMap'))
-// useClickOutside(blockWrapperRef)
 const editable = inject('editable', true)
 </script>
 

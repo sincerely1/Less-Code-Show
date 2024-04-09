@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Data, LayoutThree, Lightning, Share, PreviewOpen } from '@icon-park/vue-next'
 import { computed, defineComponent, h } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 
 const linkItems = [
   {
@@ -32,11 +32,7 @@ defineProps<{
 }>()
 
 const route = useRoute()
-const router = useRouter()
 const activeLink = computed(() => route.name)
-const linkToRunning = () => {
-  router.push('/runner')
-}
 const Icon = defineComponent({
   setup(props) {
     switch (props.type) {
@@ -126,7 +122,6 @@ const Icon = defineComponent({
   height: 32px;
   margin: 10px 8px 10px 18px;
   border-radius: 8px;
-  background-color: var(--color-white);
 }
 
 .app-logo img {
@@ -155,7 +150,6 @@ const Icon = defineComponent({
   padding: 0 8px;
   margin: 0 24px;
   align-self: stretch;
-  background-color: var(--color-white);
   color: var(--color-text);
   font-size: var(--font-size-normal);
   font-weight: var(--font-weight-bold);
@@ -195,16 +189,5 @@ const Icon = defineComponent({
   font-weight: var(--font-weight-bold);
   cursor: pointer;
   user-select: none;
-}
-
-.debug-btn {
-  box-shadow: var(--color-gray-300) 0 0 0 1px;
-  background-color: var(--color-white);
-  color: var(--color-black);
-}
-
-.debug-btn.debug {
-  color: var(--color-primary);
-  box-shadow: var(--color-primary) 0 0 0 1px;
 }
 </style>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { ListTable } from '@visactor/vtable'
 // @ts-ignore
 const tableNode = ref()

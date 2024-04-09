@@ -4,13 +4,7 @@
       <span>导出 JSON</span>
       <copy class="icon" @click="handleCopyText" />
     </div>
-    <vue-json-pretty
-      class="json-pretty"
-      showIcon
-      showLineNumber
-      :editable="true"
-      :data="currentBlockInfo"
-    />
+    <VueJsonPretty showIcon showLineNumber editable :data="currentBlockInfo" />
   </div>
 </template>
 
@@ -18,7 +12,6 @@
 import { Copy } from '@icon-park/vue-next'
 import copyText from 'copy-text-to-clipboard'
 import VueJsonPretty from 'vue-json-pretty'
-
 const props = defineProps<{
   currentBlockInfo: any
 }>()
@@ -40,6 +33,7 @@ const handleCopyText = () => {
   border-radius: 6px;
   color: var(--color-text);
 }
+
 .schema-exporter-header {
   display: flex;
   justify-content: space-between;
@@ -51,23 +45,12 @@ const handleCopyText = () => {
   color: var(--color-gray-800);
   font-size: var(--font-size-small);
 }
+
 .icon {
   cursor: pointer;
 }
+
 .icon:hover {
   color: var(--color-primary);
-}
-.json-pretty {
-  color: var(--color-gray-800);
-}
-</style>
-
-<style>
-.vjs-tree-node {
-  border-radius: 6px;
-}
-.vjs-tree-node:hover {
-  background-color: var(--color-gray-300);
-  font-weight: var(--font-weight-bolder);
 }
 </style>
