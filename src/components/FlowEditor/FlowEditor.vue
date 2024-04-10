@@ -95,8 +95,8 @@ function resetTransform() {
 </template>
 
 <style scoped>
-@import url('https://cdn.jsdelivr.net/npm/@vue-flow/controls@latest/dist/style.css');
-@import url('https://cdn.jsdelivr.net/npm/@vue-flow/minimap@latest/dist/style.css');
+@import 'https://cdn.jsdelivr.net/npm/@vue-flow/controls@latest/dist/style.css';
+@import 'https://cdn.jsdelivr.net/npm/@vue-flow/minimap@latest/dist/style.css';
 
 .controls {
   display: flex;
