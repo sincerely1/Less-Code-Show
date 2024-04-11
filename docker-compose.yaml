@@ -1,9 +1,16 @@
 version: '3'
 services:
-  less-code-show:
+  build-less-code-show:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: build.Dockerfile
     ports:
       - 4000:80
+    restart: always
+  dist-less-code-show:
+    build:
+      context: .
+      dockerfile: dist.Dockerfile
+    ports:
+      - 5000:80
     restart: always
